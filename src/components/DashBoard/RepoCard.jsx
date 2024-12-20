@@ -1,6 +1,8 @@
 import PropTypes from "prop-types";
+
 const RepoCard = (props) => {
   const { title, type, language, size, updated } = props.repoDetails;
+
   return (
     <li className="py-4 px-5 border-t border-[#E9EAEB] hover:bg-[#F5F5F5]">
       <div className="flex flex-row items-center gap-2">
@@ -40,7 +42,13 @@ const RepoCard = (props) => {
 };
 
 RepoCard.propTypes = {
-  props: PropTypes.object.isRequired,
+  repoDetails: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    language: PropTypes.string.isRequired,
+    size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    updated: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default RepoCard;
